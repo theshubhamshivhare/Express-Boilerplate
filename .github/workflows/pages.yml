@@ -28,9 +28,9 @@ jobs:
         with:
           publish_dir: ./site
           publish_branch: gh-pages-dev
-          github_token: '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'
-          user_name: 'shubham7047'
-          user_email: 'shubham7047@gmail.com'
+          github_token: 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
+          user_name: shubham7047
+          user_email: shubham7047@gmail.com
 
       # Deploy to GH Pages for other branches
       - name: Deploy to GitHub Pages (Branch)
@@ -39,7 +39,7 @@ jobs:
         with:
           publish_dir: ./site
           publish_branch: gh-pages-${{ github.ref_name }}
-          github_token: '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'
-          user_name: 'shubham7047'
-          user_email: 'shubham7047@gmail.com'
+          github_token: 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
+          user_name: shubham7047
+          user_email: shubham7047@gmail.com
         # If the push is to any branch other than master, this step deploys the site to a branch named 'gh-pages-<branch-name>'
