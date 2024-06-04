@@ -8,7 +8,7 @@ on:
 
 jobs:
   docsBuildDeploy:
-    runs-on: cicd_v2
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Service Repo
         uses: actions/checkout@v4
