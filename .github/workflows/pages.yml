@@ -27,6 +27,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           publish_dir: ./site
+          github_token: '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'
 
       # Deploy to GH Pages for other branches
       - name: Deploy to GitHub Pages (Branch)
@@ -35,4 +36,5 @@ jobs:
         with:
           publish_dir: ./site
           publish_branch: gh-pages-${{ github.ref_name }}
+          github_token: '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'
         # If the push is to any branch other than master, this step deploys the site to a branch named 'gh-pages-<branch-name>'
