@@ -1,0 +1,38 @@
+name: Documentation Deployment
+
+on:
+  push:
+    branches:
+      - master
+      - '**' # All branches
+
+jobs:
+  docsBuildDeploy:
+    runs-on: cicd_v2
+    steps:
+      - name: Checkout Service Repo
+        uses: actions/checkout@v4
+
+      - name: Install MkDocs with Material Theme
+        run: |
+          pip3 install mkdocs mkdocs-material
+
+      - name: Build Documentation Site
+        run: |
+          mkdocs build
+
+      # Deploy to GH Pages for the master branch
+      - name: Deploy to GitHub Pages (Master)
+        if: github.ref == 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: ./site
+
+      # Deploy to GH Pages for other branches
+      - name: Deploy to GitHub Pages (Branch)
+        if: github.ref != 'refs/heads/master'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./site
+          publish_branch: gh-pages-${{ github.ref_name }}
+        # If the push is to any branch other than master, this step deploys the site to a branch named 'gh-pages-<branch-name>'
